@@ -1,0 +1,24 @@
+<div class="card">
+    <div class="card-body">
+        <h5 class="card-title">{{ card.dstitulo }}</h5>
+        <br>
+        <label>Descrição:</label>
+        <p class="card-text"> {{ card.dsdescricao }} </p>
+        <label>Data de criação:</label>
+        <p class="card-text"> {{ card.dtcriacao }} </p>
+        <label>Data de conclusão:</label>
+        <p class="card-text"> {{ card.dtconcluido }} </p>
+        
+        <app-btn-editar
+            [card]="card"
+            (updateCardEvent)="updateCard($event)"
+        ></app-btn-editar>
+
+        <app-btn-excluir
+            [titleCard]="card.dstitulo"
+            [idCard]="card.idcard"
+            (removeCardEvent)="deleteCard()"
+        ></app-btn-excluir>
+        
+    </div>
+</div>

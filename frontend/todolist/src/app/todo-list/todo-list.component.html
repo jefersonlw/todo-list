@@ -1,0 +1,39 @@
+<div>
+  <div class="row d-flex">
+    <div class="">
+      <app-btn-novo
+          (newCardEvent)="newCard($event)"
+      ></app-btn-novo>
+    </div>
+  </div>
+  <div>
+    <table class="col-md-12">
+      <tr>
+        <td><h3>Tarefas pendentes</h3></td>
+        <td><h3>Tarefas concluídas</h3></td>
+      </tr>
+      <tr>
+        <td>
+          <table>
+            <tr *ngFor="let card of cards">
+              <td *ngIf="(card.iestatus == 'P')">
+                  <app-card
+                    [card]="card" 
+                  ></app-card>
+                </td>
+          </table>
+        </td>
+        <td>
+          <table>
+            <tr *ngFor="let card of cards">
+              <td *ngIf="(card.iestatus == 'F')">
+                  <app-card
+                    [card]="card" 
+                  ></app-card>
+                </td>
+          </table>
+        </td>
+      </tr>
+    </table>    
+  </div>
+</div>

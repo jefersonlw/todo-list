@@ -1,0 +1,56 @@
+<button class="btn btn-sm btn-outline-primary" (click)="openModal(template)">
+    <i class="fa fa-pencil"></i> Editar
+</button>
+  
+  <ng-template #template>
+    <div class="modal-header">
+      <h4 class="modal-title pull-left">Editar tarefa</h4>
+      <button
+        type="button"
+        class="close btn btn-outline-dark pull-right"
+        aria-label="Close"
+        (click)="modalRef?.hide()"
+      >
+        <i class="fa fa-remove"></i>
+      </button>
+    </div>
+    <div class="modal-body">
+      <form [formGroup]="formEdit">
+        <div class="form-group">
+            <label for="edt_dstitulo">Título</label>
+            <input type="text" class="form-control" id="dstitulo" formControlName="dstitulo"/>
+        </div>
+        <div class="form-group">
+            <label for="edt_dsdescricao">Descrição</label>
+            <textarea class="form-control" id="dsdescricao" formControlName="dsdescricao"></textarea>
+        </div>
+        <div class="form-group">
+            <label for="edt_dtcriacao">Data criação</label>
+            <input type="datetime-local" class="form-control" id="dtcriacao" formControlName="dtcriacao"/>
+        </div>
+        <div class="form-group">
+            <label for="edt_dtconcluido">Data conclusão</label>
+            <input type="datetime-local" class="form-control" id="dtconcluido" formControlName="dtconcluido"/>
+        </div>
+
+        <div class="form-group">
+            <label for="edt_iestatus">Status</label>
+            <select name="iestatus" class="form-control" id="iestatus" formControlName="iestatus">
+                <option value="P">Pendente</option>
+                <option value="F">Concluída</option>
+            </select>
+        </div>
+        <br>
+  
+        <div class="d-flex justify-content-center">
+          <button
+            class="btn btn-primary"
+            [disabled]="formEdit.invalid"
+            (click)="updateCard()"
+          >
+            Salvar
+          </button>
+        </div>
+      </form>
+    </div>
+  </ng-template>
